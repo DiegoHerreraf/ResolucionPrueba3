@@ -1,17 +1,17 @@
-<%-- 
-    Document   : Nav
-    Created on : 24-11-2018, 09:27:46 PM
-    Author     : Rodrigo
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1>Hello World!</h1>
-    </body>
-</html>
+<ul>
+    <li>
+        <a href="/ResolucionPrueba3/pages/index.jsp">
+            Inicio
+        </a>
+    </li>
+    <li>
+        <a href="/ResolucionPrueba3/pages/buy.jsp">
+            Comprar
+        </a>
+    </li>
+    <li>
+        <a href="ventasServlet">
+            Consulta Ventas
+        </a>
+    </li>
+</ul>
