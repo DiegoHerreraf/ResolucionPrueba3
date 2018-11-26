@@ -19,7 +19,7 @@ public class VentaDB {
     //Metodo utilizado para insertar un Detalle de Venta a nuestra Base de datos
     //Obtenemos la conexion de Venta debido a que la clase Venta es la que inicia
     //la transaccion
-   public static synchronized boolean insertarVenta(Venta varventa, ArrayList<DetalleVenta> detalle) {
+   /*public static synchronized boolean insertarVenta(Venta varventa, ArrayList<DetalleVenta> detalle) {
 
         Connection cn = null;
         CallableStatement cl = null;
@@ -128,5 +128,5 @@ cn = Conexion.getConexion();
             Conexion.cerrarConexion(cn);
         }
         return lista;
-    }
+    }*/
 }

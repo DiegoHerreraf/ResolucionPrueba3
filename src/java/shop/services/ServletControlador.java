@@ -140,7 +140,7 @@ public class ServletControlador extends HttpServlet {
         //Redireccionamos al formulario de culminar la venta
         response.sendRedirect("registrarVenta.jsp");
     }
-     private void registrarVenta(HttpServletRequest request, HttpServletResponse response)
+    private void registrarVenta(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession sesion = request.getSession();
         Venta v=new Venta();
