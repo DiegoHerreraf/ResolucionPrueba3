@@ -51,20 +51,20 @@ public class ServletController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+               String accion = request.getParameter("accion");
+        if (accion.equals("ModificarArticulo")) {
+            actualizarArticulo(request, response);
+        } else if (accion.equals("AnadirCarrito")) {
+            añadirCarrito(request, response);
+        } else if (accion.equals("RegistrarVenta")) {
+            registrarVenta(request, response);
+        }
+     
     }
      protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //La accion se va a guardar en un caja de texto oculto que nos dira que accion
         //debemos hacer
-        String accion = request.getParameter("accion");
-        if (accion.equals("ModificarArticulo")) {
-            this.actualizarArticulo(request, response);
-        } else if (accion.equals("AnadirCarrito")) {
-            this.añadirCarrito(request, response);
-        } else if (accion.equals("RegistrarVenta")) {
-            this.registrarVenta(request, response);
-        }
      }
 
     private void actualizarArticulo(HttpServletRequest request, HttpServletResponse response)

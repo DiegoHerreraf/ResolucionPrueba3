@@ -35,7 +35,7 @@ public class DbConnection {
         }
         return con;
     }    
-    public static synchronized void deshacerCambios(Connection cn) {
+    public static  void deshacerCambios(Connection cn) {
         try{cn.rollback();}catch (Exception e){}
     }
     //Metodo utilizado para cerrar el callablestatemente
@@ -43,7 +43,7 @@ public class DbConnection {
         try{cl.close();}catch(Exception e){}
     }
     //Metodo utilizado para cerrar la conexion
-    public static synchronized void cerrarConnection(Connection cn) {
+    public static  void cerrarConnection(Connection cn) {
         try{cn.close();} catch (Exception e) {}
     }
 }
