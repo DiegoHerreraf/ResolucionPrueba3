@@ -15,10 +15,9 @@
     <body>
     <table border="0" width="1000" align="center">
         <tr bgcolor="skyblue">
-            <th><a href="index.jsp">Articulos</a></th>
-            <th><a href="registrarArticulo.jsp">Registrar Articulo</a></th>
-            <th><a href="./Pages/RegistrarVenta.jsp">Registrar Venta</a></th>
-            <th><a href="verVentas.jsp">Ver Ventas</a></th>
+            <th><a href="/ResolucionPrueba3/Pages/index.jsp">Articulos</a></th>
+            <th><a href="/ResolucionPrueba3/Pages/RegistrarVenta.jsp">Registrar Venta</a></th>
+            <th><a href="/ResolucionPrueba3/Pages/verVentas.jsp">Ver Ventas</a></th>
             <th><a href="ServletLogueo?accion=cerrar">Cerrar Sesion</a></th>
             <th width="200"></th>
         </tr>
@@ -27,15 +26,15 @@
         <table border="0" align="center" width="1000">
             
              <%
-                ArrayList<Articulo> lista = ArticuloDB.obtenerProducto();
+                ArrayList<Articulo> lista = ArticuloDB.obtenerArticulo();
                 int salto = 0;
                 for (Articulo a : lista) {
              %>
              <th><img src="../Img/<%=a.getImagen()%>" width="140" height="140"><p>
                  <%= a.getNombre()%><br>
                  <%= a.getPrecio()%><p>
-                     <a href="./Pages/modificar.jsp?id=<%= a.getCodigoArticulo()%>">Modificar</a>
-                     <a href="./Pages/anadirAlCarrito.jsp?id=<%= a.getCodigoArticulo()%>">Añadir</a>
+                     <a href="/ResolucionPrueba3/Pages/modificar.jsp?id=<%= a.getCodigoArticulo()%>">Modificar</a>
+                     <a href="/ResolucionPrueba3/Pages/anadirAlCarrito.jsp?id=<%= a.getCodigoArticulo()%>">Añadir</a>
                      
              </th>
              <%

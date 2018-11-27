@@ -16,16 +16,15 @@
     <body>
         <table border="0" width="1000" align="center">
             <tr bgcolor="skyblue">
-                <th><a href="../Pages/index.jsp">Catalogo</a></th>
-                <th><a href="registrarArticulo.jsp">Registrar Articulo</a></th>
-                <th><a href="registrarVenta.jsp">Registrar Venta</a></th>
-                <th><a href="verVentas.jsp">Ver Ventas</a></th>
+                <th><a href="/ResolucionPrueba3/Pages/index.jsp">Catalogo</a></th>
+                <th><a href="/ResolucionPrueba3/Pages/registrarVenta.jsp">Registrar Venta</a></th>
+                <th><a href="/ResolucionPrueba3/Pages/verVentas.jsp">Ver Ventas</a></th>
                 <th><a href="ServletLogueo?accion=cerrar">Cerrar Sesion</a></th>
                 <th width="200"></th>
             </tr>    
         </table>
         <table border="0" width="1000" align="center">
-            <form method="post" action="ServletControlador">
+            <form method="post" action="${pageContext.request.contextPath}/ServletController">
                 <%-- Llamamos a la accion Registrar Venta --%>
                 <input type="hidden" name="accion" value="RegistrarVenta" />
                 <table border="0">
@@ -61,7 +60,7 @@
                                     }
                         %>
                         <tr >
-                            <td colspan="5"><input type="submit" value="Registrar Venta" name="btnVenta" /></td>
+                            <td colspan="5"><input type="submit" value="RegistrarVenta" name="btnVenta" /></td>
                         </tr>
                     </table>
                 </form>

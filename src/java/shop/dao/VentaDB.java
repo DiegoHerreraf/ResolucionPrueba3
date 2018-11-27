@@ -19,7 +19,7 @@ public class VentaDB {
     //Metodo utilizado para insertar un Detalle de Venta a nuestra Base de datos
     //Obtenemos la conexion de Venta debido a que la clase Venta es la que inicia
     //la transaccion
-   /*public static synchronized boolean insertarVenta(Venta varventa, ArrayList<DetalleVenta> detalle) {
+   public static synchronized boolean insertarVenta(Venta varventa, ArrayList<DetalleVenta> detalle) {
 
         Connection cn = null;
         CallableStatement cl = null;
@@ -27,10 +27,10 @@ public class VentaDB {
         try {
             //Nombre del procedimiento almacenado y como espera tres parametros
             //le ponemos 3 interrogantes
-            String call = "{CALL spI_venta(?,?)}";
+            String call = "{CALL sp_venta(?,?)}";
 
 //Obtenemos la conexion
-            cn = Conexion.getConexion();
+            cn = DbConnection.getConnection();
             //Decimos que vamos a crear una transaccion
             cn.setAutoCommit(false);
             //Preparamos la sentecia
@@ -50,7 +50,7 @@ public class VentaDB {
                     //Establecemos al detalle el codigo genero producto de la venta
                     det.setCodigoVenta(varventa.getCodigoVenta());
                     //Insertamos el detalle y le pasamos la conexion
-                    rpta = DetalleVentaBD.insertarDetalleVenta(det, cn);
+                    rpta = DetalleVentaDB.insertarDetalleVenta(det, cn);
                     //Si nos devuelve false salimos del for
                     if (!rpta) {
                         break;
@@ -61,24 +61,24 @@ public class VentaDB {
                     cn.commit();
                 } else {
                     //Negamos la transaccion
-                    Conexion.deshacerCambios(cn);
+                    DbConnection.deshacerCambios(cn);
                 }
             } else {
                 //Negamos la transaccion
-                Conexion.deshacerCambios(cn);
+                DbConnection.deshacerCambios(cn);
             }
-            Conexion.cerrarCall(cl);
-            Conexion.cerrarConexion(cn);
+            DbConnection.cerrarCall(cl);
+            DbConnection.cerrarConnection(cn);
         } catch (SQLException e) {
             e.printStackTrace();
-            Conexion.deshacerCambios(cn);
-            Conexion.cerrarCall(cl);
-            Conexion.cerrarConexion(cn);
+            DbConnection.deshacerCambios(cn);
+            DbConnection.cerrarCall(cl);
+            DbConnection.cerrarConnection(cn);
         } catch (Exception e) {
             e.printStackTrace();
-            Conexion.deshacerCambios(cn);
-            Conexion.cerrarCall(cl);
-            Conexion.cerrarConexion(cn);
+            DbConnection.deshacerCambios(cn);
+            DbConnection.cerrarCall(cl);
+            DbConnection.cerrarConnection(cn);
         }
         return rpta;
     }
@@ -92,9 +92,9 @@ public class VentaDB {
         ResultSet rs = null;
         try {
             //Nombre del procedimiento almacenado
-            String call = "{CALL spF_venta_All()}";
+            String call = "{CALL sp_venta_All()}";
 
-cn = Conexion.getConexion();
+            cn = DbConnection.getConnection();
             cl = cn.prepareCall(call);
             //La sentencia lo almacenamos en un resulset
             rs = cl.executeQuery();
@@ -102,31 +102,31 @@ cn = Conexion.getConexion();
             //e insertarlo en nuestro array
             while (rs.next()) {
                 Venta ven=new Venta();
-                Producto pro=new Producto();
+                Articulo art=new Articulo();
                 DetalleVenta det=new DetalleVenta();
                 ven.setCodigoVenta(rs.getInt("CodigoVenta"));
                 ven.setCliente(rs.getString("Cliente"));
                 ven.setFecha(rs.getTimestamp("Fecha"));
-                pro.setCodigoProducto(rs.getInt("CodigoProducto"));
-                pro.setNombre(rs.getString("Nombre"));
-                pro.setPrecio(rs.getDouble("Precio"));
-                det.setCantidad(rs.getDouble("Cantidad"));
-                det.setDescuento(rs.getDouble("Parcial"));
+                art.setCodigoArticulo(rs.getInt("CodigoArticulo"));
+                art.setNombre(rs.getString("Nombre"));
+                art.setPrecio(rs.getInt("Precio"));
+                det.setCantidad(rs.getInt("Cantidad"));
+                det.setDescuento(rs.getInt("Parcial"));
                 det.setVenta(ven);
-                det.setProducto(pro);
+                det.setArticulo(art);
                 lista.add(det);
             }
-            Conexion.cerrarCall(cl);
-            Conexion.cerrarConexion(cn);
+            DbConnection.cerrarCall(cl);
+            DbConnection.cerrarConnection(cn);
         } catch (SQLException e) {
             e.printStackTrace();
-            Conexion.cerrarCall(cl);
-            Conexion.cerrarConexion(cn);
+            DbConnection.cerrarCall(cl);
+            DbConnection.cerrarConnection(cn);
         } catch (Exception e) {
             e.printStackTrace();
-            Conexion.cerrarCall(cl);
-            Conexion.cerrarConexion(cn);
+            DbConnection.cerrarCall(cl);
+            DbConnection.cerrarConnection(cn);
         }
         return lista;
-    }*/
+    }
 }

@@ -22,10 +22,10 @@
     <body>
        <table border="0" width="1000" align="center">
             <tr bgcolor="skyblue">
-                <th><a href="../Pages/index.jsp">Catalogo</a></th>
-                <th><a href="registrarArticulo.jsp">Registrar Articulo</a></th>
-                <th><a href="registrarVenta.jsp">Registrar Venta</a></th>
-                <th><a href="verVentas.jsp">Ver Ventas</a></th>
+                <th><a href="/ResolucionPrueba3/Pages/index.jsp">Catalogo</a></th>
+                <th><a href="/ResolucionPrueba3/Pages/registrarArticulo.jsp">Registrar Articulo</a></th>
+                <th><a href="/ResolucionPrueba3/Pages/registrarVenta.jsp">Registrar Venta</a></th>
+                <th><a href="/ResolucionPrueba3/Pages/verVentas.jsp">Ver Ventas</a></th>
                 <th><a href="ServletLogueo?accion=cerrar">Cerrar Sesion</a></th>
                 <th width="200"></th>
             </tr>    
@@ -33,7 +33,7 @@
         <br>
         <h2 align="center">Modificar articulo</h2>
         <%-- En el action del formulario le decimos que llama al Controlador --%>
-        <form method="post" action="ServletControlador">
+        <form method="post" action="${pageContext.request.contextPath}/ServletController">
                 <%-- Indica al controlador que vamos hacer una modificacion --%>
                     <tr>
                     <th rowspan="5"><img src="../Img/<%= a.getImagen()%>" width="140" height="140"></th>
