@@ -49,7 +49,7 @@
                                         for (DetalleVenta d : lista) {
                         %>
                                         <tr>
-                                            <td><%= d.getArticulo()%></td>
+                                            <td><%= d.getArticulo().getNombre()%></td>
                                             <td><%= d.getArticulo().getPrecio()%></td>
                                             <td><%= d.getCantidad()%></td>
                                             <td><%= d.getDescuento()%></td>

@@ -127,7 +127,7 @@ public class ServletController extends HttpServlet {
             carrito.add(d);
         } else {
             //Si es otro valor es porque el producto esta en el carrito
-            //y vamos actualizar la 
+            //y vamos actualizarla 
             carrito.set(indice, d);
         }
         //Actualizamos la sesion del carrito de compras
