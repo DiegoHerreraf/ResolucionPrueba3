@@ -10,22 +10,14 @@
 <!DOCTYPE html>
 <html>
     <head>
-        </script>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <%@include file="../Partials/Head.jsp" %>
     </head>
     <body>
+        <nav>
+        <%@include file="../Partials/Nav.jsp" %>
+        </nav>
         <table border="0" width="1000" align="center">
-        <tr bgcolor="skyblue">
-            <th><a href="/ResolucionPrueba3/Pages/index.jsp">Articulos</a></th>
-            <th><a href="/ResolucionPrueba3/Pages/RegistrarVenta.jsp">Registrar Venta</a></th>
-            <th><a href="/ResolucionPrueba3/Pages/VerVenta.jsp">Ver Ventas</a></th>
-            <th><a href="ServletLogueo?accion=cerrar">Cerrar Sesion</a></th>
-            <th width="200"></th>
-        </tr>
-    </table>
-        <table border="0" width="1000" align="center">
-            <form method="post" name="regventa" action="${pageContext.request.contextPath}/ServletController">
+            <form onsubmit="return validarRegistrarVenta();" class="form-register" method="post" action="${pageContext.request.contextPath}/ServletController">
                 <%-- Llamamos a la accion Registrar Venta --%>
                 <input type="hidden" name="accion" value="RegistrarVenta" />
                 <table border="0">
@@ -34,7 +26,7 @@
                         </tr>
                         <tr>
                             <td>Cliente:</td>
-                            <td colspan="4"><input type="text" id="Cliente" name="txtCliente" value="" required="" minlength=">3"/></td>
+                            <td colspan="4"><input type="text" id="Cliente" name="txtCliente" value=""  minlength=">3"/></td>
                         </tr>
                         <tr>
                             <td>Nombre</td>

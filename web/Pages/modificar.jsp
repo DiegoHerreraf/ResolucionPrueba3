@@ -16,34 +16,25 @@
 %>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <%@include file="../Partials/Head.jsp" %>
     </head>
     <body>
-      <table border="0" width="1000" align="center">
-        <tr bgcolor="skyblue">
-            <th><a href="/ResolucionPrueba3/Pages/index.jsp">Articulos</a></th>
-            <th><a href="/ResolucionPrueba3/Pages/RegistrarVenta.jsp">Registrar Venta</a></th>
-            <th><a href="/ResolucionPrueba3/Pages/VerVenta.jsp">Ver Ventas</a></th>
-            <th><a href="ServletLogueo?accion=cerrar">Cerrar Sesion</a></th>
-            <th width="200"></th>
-        </tr>
-    </table>
+        <nav>
+        <%@include file="../Partials/Nav.jsp" %>
+        </nav>
         <br>
         <h2 align="center">Modificar articulo</h2>
-        <%-- En el action del formulario le decimos que llama al Controlador --%>
-        <form method="post" action="${pageContext.request.contextPath}/ServletController">
-                <%-- Indica al controlador que vamos hacer una modificacion --%>
+        <form onsubmit="return validar();" class="form-register" method="post" action="${pageContext.request.contextPath}/ServletController">
                     <tr>
                     <th rowspan="5"><img src="../Img/<%= a.getImagen()%>" width="140" height="140"></th>
                     <th>Codigo</th>
                     <th><input type="text" name="txtCodigo" value="<%= a.getCodigoArticulo()%>" readonly /></th>
                 </tr><tr>
                     <th>Nombre</th>
-                    <th><input type="text" name="txtNombre" value="<%= a.getNombre()%>" /></th>
+                    <th><input type="text" id="nombrearticulo"  name="txtNombre" value="<%= a.getNombre()%>" /></th>
                 </tr><tr>
                     <th>Precio</th>
-                    <th><input type="text" name="txtPrecio" value="<%= a.getPrecio()%>" /></th>
+                    <th><input type="text" id="precioarticulo" name="txtPrecio" value="<%= a.getPrecio()%>" /></th>
                 </tr>
                     <th colspan="3"><input type="submit" value="Modificar" name="btnmodificar"/></th>
                 </tr>
