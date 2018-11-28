@@ -1,4 +1,5 @@
 
+<%@page import="shop.dao.VentaDB"%>
 <%@page import="shop.dao.Venta"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="shop.dao.DetalleVenta"%>
@@ -10,27 +11,51 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <table border="0">
+        <table border="0" width="1000" align="center">
+        <tr bgcolor="skyblue">
+            <th><a href="/ResolucionPrueba3/Pages/index.jsp">Articulos</a></th>
+            <th><a href="/ResolucionPrueba3/Pages/RegistrarVenta.jsp">Registrar Venta</a></th>
+            <th><a href="/ResolucionPrueba3/Pages/VerVenta.jsp">Ver Ventas</a></th>
+            <th><a href="ServletLogueo?accion=cerrar">Cerrar Sesion</a></th>
+            <th width="200"></th>
+        </tr>
+    </table>
+        <table border="0" width="1000" align="center">
+                <input type="hidden" name="accion" value="RegistrarVenta" />
+                <table border="0">
+                        <tr>
+                            <td colspan="5">Ventas:</td>
+                        </tr>
                         <tr>
                             <td>Nombre</td>
                             <td>Precio</td>
                             <td>Cantidad</td>
                             <td>Descuento</td>
-                            <td>Sub. Total</td>
+                            <td>Cliente</td>
+                            <td>Fecha</td>
+                            <td>Total a pagar</td>
                         </tr>
-                        <%-- Los productos que tenemos en la sesion que se llama carrito --%>
                         <%
-                                    ArrayList<Venta> lista = (ArrayList<Venta>)session.getAttribute("carrito");
-                                    if(lista!=null){
-                                        for (Venta v : lista) {
+                             ArrayList<DetalleVenta> lista = VentaDB.obtenerVentas();
+                             if(lista!=null){
+                             for (DetalleVenta v : lista) {
                         %>
-
+                             <tr>
+                               <td><%= v.getArticulo().getNombre() %></td><br>
+                               <td> <%= v.getArticulo().getPrecio() %></td><br>
+                               <td> <%= v.getCantidad() %></td><br>
+                               <td><%= v.getVenta().getCliente() %></td><br> 
+                               <td> <%= v.getVenta().getFecha() %></td><br> 
+                               <td><%= (v.getArticulo().getPrecio() * v.getCantidad())-v.getDescuento()%></td>
+                             </tr>
                         <%
-                                        }
-                                    }
+                                }
+                             }
                         %>
-                    </table>
-                </form>
+                        <tr>
+                            <td><input type="button" value="Volver al inicio" onclick = "location='/ResolucionPrueba3/Pages/index.jsp'"/></td>
+                        </tr>
+                </table>
         </table>
     </body>
 </html>

@@ -63,8 +63,6 @@ public class ServletController extends HttpServlet {
     }
      protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //La accion se va a guardar en un caja de texto oculto que nos dira que accion
-        //debemos hacer
      }
 
     private void actualizarArticulo(HttpServletRequest request, HttpServletResponse response)
@@ -86,22 +84,17 @@ public class ServletController extends HttpServlet {
         //Obtenemos la sesion actual
         HttpSession sesion = request.getSession();
         ArrayList<DetalleVenta> carrito;
-        //Si no existe la sesion creamos al carrito de cmoras
+        //Si no existe la sesion creamos al carrito
         if (sesion.getAttribute("carrito") == null) {
             carrito = new ArrayList<DetalleVenta>();
         } else {
             carrito = (ArrayList<DetalleVenta>) sesion.getAttribute("carrito");
         }
-        //Obtenemos el producto que deseamos añadir al carrito
         Articulo a = ArticuloDB.obtenerArticulo(Integer.parseInt(request.getParameter("txtCodigo")));
-        //Creamos un detalle para el carrtio
         DetalleVenta d = new DetalleVenta();
-        //Obtenemos los valores de la caja de texto
         d.setCodigoArticulo(Integer.parseInt(request.getParameter("txtCodigo")));
         d.setArticulo(a);
         d.setCantidad(Integer.parseInt(request.getParameter("txtCantidad")));
-        //Calculamos el descuento, si es sub detalle es mayor a 50 se le hace
-        //un descuento del 5% aca es donde se encuentra la logica del negocio
         int subTotal = a.getPrecio() * d.getCantidad();
         if (subTotal > 25000) {
             d.setDescuento(3000);
@@ -116,8 +109,6 @@ public class ServletController extends HttpServlet {
         for (int i = 0; i < carrito.size(); i++) {
             DetalleVenta det = carrito.get(i);
             if (det.getCodigoArticulo() == a.getCodigoArticulo()) {
-                //Si el producto ya esta en el carrito, obtengo el indice dentro
-                //del arreglo para actualizar al carrito de compras
                 indice = i;
                 break;
             }
@@ -126,26 +117,23 @@ public class ServletController extends HttpServlet {
             //Si es -1 es porque voy a registrar
             carrito.add(d);
         } else {
-            //Si es otro valor es porque el producto esta en el carrito
-            //y vamos actualizarla 
             carrito.set(indice, d);
         }
-        //Actualizamos la sesion del carrito de compras
         sesion.setAttribute("carrito", carrito);
-        //Redireccionamos al formulario de culminar la venta
+        //Redireccionamos al formulario
         response.sendRedirect("/ResolucionPrueba3/Pages/RegistrarVenta.jsp");
     }
      private void registrarVenta(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession sesion = request.getSession();
         Venta v=new Venta();
-        v.setCliente(request.getParameter("txtCliente").toUpperCase());
+        v.setCliente(request.getParameter("txtCliente"));
         ArrayList<DetalleVenta> detalle  = (ArrayList<DetalleVenta>) sesion.getAttribute("carrito");
         boolean rpta=VentaDB.insertarVenta(v, detalle);
         if (rpta) {
-            response.sendRedirect("/ResolucionPrueba3/Pages/index.jsp");
+            response.sendRedirect("/ResolucionPrueba3/Pages/VerVenta.jsp");
         } else {
-            response.sendRedirect("/ResolucionPrueba3/Pages/RegistrarVenta.jsp");
+            response.sendRedirect("/ResolucionPrueba3/Pages/RegistrarVenta.jsp.jsp");
         }
     }
      @Override

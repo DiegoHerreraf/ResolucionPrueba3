@@ -10,21 +10,22 @@
 <!DOCTYPE html>
 <html>
     <head>
+        </script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
     <body>
         <table border="0" width="1000" align="center">
-            <tr bgcolor="skyblue">
-                <th><a href="/ResolucionPrueba3/Pages/index.jsp">Catalogo</a></th>
-                <th><a href="/ResolucionPrueba3/Pages/registrarVenta.jsp">Registrar Venta</a></th>
-                <th><a href="/ResolucionPrueba3/Pages/verVentas.jsp">Ver Ventas</a></th>
-                <th><a href="ServletLogueo?accion=cerrar">Cerrar Sesion</a></th>
-                <th width="200"></th>
-            </tr>    
-        </table>
+        <tr bgcolor="skyblue">
+            <th><a href="/ResolucionPrueba3/Pages/index.jsp">Articulos</a></th>
+            <th><a href="/ResolucionPrueba3/Pages/RegistrarVenta.jsp">Registrar Venta</a></th>
+            <th><a href="/ResolucionPrueba3/Pages/VerVenta.jsp">Ver Ventas</a></th>
+            <th><a href="ServletLogueo?accion=cerrar">Cerrar Sesion</a></th>
+            <th width="200"></th>
+        </tr>
+    </table>
         <table border="0" width="1000" align="center">
-            <form method="post" action="${pageContext.request.contextPath}/ServletController">
+            <form method="post" name="regventa" action="${pageContext.request.contextPath}/ServletController">
                 <%-- Llamamos a la accion Registrar Venta --%>
                 <input type="hidden" name="accion" value="RegistrarVenta" />
                 <table border="0">
@@ -33,7 +34,7 @@
                         </tr>
                         <tr>
                             <td>Cliente:</td>
-                            <td colspan="4"><input type="text" name="txtCliente" value="" /></td>
+                            <td colspan="4"><input type="text" id="Cliente" name="txtCliente" value="" required="" minlength=">3"/></td>
                         </tr>
                         <tr>
                             <td>Nombre</td>
@@ -42,25 +43,26 @@
                             <td>Descuento</td>
                             <td>Sub. Total</td>
                         </tr>
-                        <%-- Los productos que tenemos en la sesion que se llama carrito --%>
+                        <%-- Los Articulos que tenemos en la sesion que se llama carrito --%>
                         <%
-                                    ArrayList<DetalleVenta> lista = (ArrayList<DetalleVenta>)session.getAttribute("carrito");
-                                    if(lista!=null){
-                                        for (DetalleVenta d : lista) {
+                           ArrayList<DetalleVenta> lista = (ArrayList<DetalleVenta>)session.getAttribute("carrito");
+                           if(lista!=null){
+                           for (DetalleVenta d : lista) {
                         %>
-                                        <tr>
-                                            <td><%= d.getArticulo().getNombre()%></td>
-                                            <td><%= d.getArticulo().getPrecio()%></td>
-                                            <td><%= d.getCantidad()%></td>
-                                            <td><%= d.getDescuento()%></td>
-                                            <td><%= (d.getArticulo().getPrecio() * d.getCantidad())-d.getDescuento()%></td>
-                                        </tr>
+                            <tr>
+                               <td><%= d.getArticulo().getNombre()%></td>
+                               <td><%= d.getArticulo().getPrecio()%></td>
+                               <td><%= d.getCantidad()%></td>
+                               <td><%= d.getDescuento()%></td>
+                               <td><%= (d.getArticulo().getPrecio() * d.getCantidad())-d.getDescuento()%></td>
+                               </tr>
                         <%
-                                        }
-                                    }
+                               }
+                           }
                         %>
-                        <tr >
+                        <tr>
                             <td colspan="5"><input type="submit" value="RegistrarVenta" name="btnVenta" /></td>
+                            <td><input type="button" value="Seguir comprando" onclick = "location='/ResolucionPrueba3/Pages/index.jsp'"/></td>
                         </tr>
                     </table>
                 </form>

@@ -17,7 +17,7 @@
         <tr bgcolor="skyblue">
             <th><a href="/ResolucionPrueba3/Pages/index.jsp">Articulos</a></th>
             <th><a href="/ResolucionPrueba3/Pages/RegistrarVenta.jsp">Registrar Venta</a></th>
-            <th><a href="/ResolucionPrueba3/Pages/verVentas.jsp">Ver Ventas</a></th>
+            <th><a href="/ResolucionPrueba3/Pages/VerVenta.jsp">Ver Ventas</a></th>
             <th><a href="ServletLogueo?accion=cerrar">Cerrar Sesion</a></th>
             <th width="200"></th>
         </tr>
@@ -34,12 +34,11 @@
                  <%= a.getNombre()%><br>
                  <%= a.getPrecio()%><p>
                      <a href="/ResolucionPrueba3/Pages/modificar.jsp?id=<%= a.getCodigoArticulo()%>">Modificar</a>
-                     <a href="/ResolucionPrueba3/Pages/anadirAlCarrito.jsp?id=<%= a.getCodigoArticulo()%>">Añadir</a>
-                     
+                     <a href="/ResolucionPrueba3/Pages/anadirAlCarrito.jsp?id=<%= a.getCodigoArticulo()%>">Añadir</a>   
              </th>
              <%
                  salto++;
-                 if(salto==3){
+                 if(salto==4){
              %>
                 <tr>
              <%

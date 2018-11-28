@@ -18,15 +18,13 @@ public class DetalleVentaDB {
         CallableStatement cl = null;
         boolean rpta = false;
         try {
-            //Nombre del procedimiento almacenado y como espera tres parametros
-            //le ponemos 3 interrogantes
+            //Nombre del procedimiento almacenado y sus 4 parametros
             String call = "{CALL sp_detalleventa(?,?,?,?)}";
-
-//Preparamos la sentecia
+            //Preparamos la sentecia
             cl = cn.prepareCall(call);
             //Codigo de la venta
             cl.setInt(1, varDetalle.getCodigoVenta());
-            //Codigo del producto
+            //Codigo del Articulo
             cl.setInt(2, varDetalle.getCodigoArticulo());
             //La cantidad
             cl.setInt(3, varDetalle.getCantidad());

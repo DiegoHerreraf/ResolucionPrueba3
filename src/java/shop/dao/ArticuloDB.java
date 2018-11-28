@@ -8,7 +8,7 @@ public class ArticuloDB {
     //static para no tener que instanciar la clase
 
     public static  ArrayList<Articulo> obtenerArticulo() {
-        //El array que contendra todos nuestros productos
+        //El array que contendra todos los articulos
         ArrayList<Articulo> lista = new ArrayList<Articulo>();
         Connection cn = null;
         CallableStatement cl = null;
@@ -18,13 +18,11 @@ public class ArticuloDB {
             String call = "{CALL listarArticulos}";
             cn = DbConnection.getConnection();
             cl = cn.prepareCall(call);
-            //La sentencia lo almacenamos en un resulset
+            //La sentencia la almacenamos en un resulset
             rs = cl.executeQuery();
-            //Consultamos si hay datos para recorrerlo
-            //e insertarlo en nuestro array
+            //Consultamos si hay datos para recorrerlo e insertarlo en nuestro array
             while (rs.next()) {
                 Articulo a = new Articulo(rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getString(4));
-                //Lo adicionamos a nuestra lista
                 lista.add(a);
             }
             DbConnection.cerrarCall(cl);
@@ -51,13 +49,11 @@ public class ArticuloDB {
             cn = DbConnection.getConnection();
             cl = cn.prepareCall(call);
             cl.setInt(1, codigo);
-            //La sentencia lo almacenamos en un resulset
+            //La sentencia la almacenamos en un resulset
             rs = cl.executeQuery();
-            //Consultamos si hay datos para recorrerlo
-            //e insertarlo en nuestro array
+            //Consultamos si hay datos para recorrerlo e insertarlo en el array
             while (rs.next()) {
-                //Obtenemos los valores de la consulta y creamos
-                //nuestro objeto producto
+                //Obtenemos los valores de la consulta y creamos el objeto Articulo
                 a.setCodigoArticulo(rs.getInt(1));
                 a.setNombre(rs.getString(2));
                 a.setPrecio(rs.getInt(3));
@@ -81,8 +77,7 @@ public class ArticuloDB {
         CallableStatement cl = null;
         boolean rpta = false;
         try {
-            //Nombre del procedimiento almacenado y como espera tres parametros
-            //le ponemos 3 interrogantes
+            //Nombre del procedimiento almacenado con los tres parametros que requiere
             String call = "{CALL sp_Articulo(?,?,?)}";
             //Obtenemos la conexion
             cn = DbConnection.getConnection();
