@@ -38,7 +38,7 @@
                                <td> <%= v.getCantidad() %></td><br>
                                <td><%= v.getVenta().getCliente() %></td><br> 
                                <td> <%= v.getVenta().getFecha() %></td><br> 
-                               <td><%= (v.getArticulo().getPrecio() * v.getCantidad())-v.getDescuento()%></td>
+                               <td><%= v.getArticulo().getPrecio() * v.getCantidad()%></td>
                              </tr>
                         <%
                                 }
