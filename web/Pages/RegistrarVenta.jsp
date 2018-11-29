@@ -53,7 +53,8 @@
                         %>
                         <tr>
                             <td colspan="5"><input type="submit" value="RegistrarVenta" name="btnVenta" />
-                            <input align="right" type="button" value="Seguir comprando" onclick = "location='/ResolucionPrueba3/Pages/index.jsp'"/></td></td>
+                            <input align="right" type="button" value="Seguir comprando" onclick = "location='/ResolucionPrueba3/Pages/index.jsp'"/>
+                            <input align="right" type="submit" value="Cancelarcompra"</td></td>
                         </tr>
                     </table>
                 </form>

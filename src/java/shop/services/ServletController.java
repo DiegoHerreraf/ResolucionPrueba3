@@ -58,6 +58,8 @@ public class ServletController extends HttpServlet {
             añadirCarrito(request, response);
         } else if (accion.equals("RegistrarVenta")) {
             registrarVenta(request, response);
+        }else if (accion.equals("Cancelarcompra")){
+            cancelarcompra(request, response);
         }
      
     }
@@ -137,6 +139,12 @@ public class ServletController extends HttpServlet {
             response.sendRedirect("/ResolucionPrueba3/Pages/RegistrarVenta.jsp.jsp");
         }
     }
+     public void cancelarcompra(HttpServletRequest request, HttpServletResponse response)
+             throws ServletException, IOException {
+                HttpSession sesion = request.getSession();
+                sesion.invalidate();
+                response.sendRedirect("/ResolucionPrueba3/Pages/index.jsp");
+     }
      @Override
     public String getServletInfo() {
         return "Short description";
