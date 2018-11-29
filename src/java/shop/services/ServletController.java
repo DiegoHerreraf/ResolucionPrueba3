@@ -132,6 +132,7 @@ public class ServletController extends HttpServlet {
         boolean rpta=VentaDB.insertarVenta(v, detalle);
         if (rpta) {
             response.sendRedirect("/ResolucionPrueba3/Pages/VerVenta.jsp");
+             sesion.invalidate();
         } else {
             response.sendRedirect("/ResolucionPrueba3/Pages/RegistrarVenta.jsp.jsp");
         }

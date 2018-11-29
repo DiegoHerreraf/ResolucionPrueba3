@@ -7,16 +7,15 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <%@include file="../Partials/Head.jsp" %>
     </head>
     <body>
         <nav>
         <%@include file="../Partials/Nav.jsp" %>
         </nav>
-        <table border="0" width="1000" align="center">
-                <input type="hidden" name="accion" value="RegistrarVenta" />
-                <table border="0">
+        <div class="container">
+            <input type="hidden" name="accion" value="RegistrarVenta" />
+                <table class="table table-hover" border="0" >
                         <tr>
                             <td colspan="5">Ventas:</td>
                         </tr>
@@ -24,7 +23,6 @@
                             <td>Nombre</td>
                             <td>Precio</td>
                             <td>Cantidad</td>
-                            <td>Descuento</td>
                             <td>Cliente</td>
                             <td>Fecha</td>
                             <td>Total a pagar</td>
@@ -50,6 +48,6 @@
                             <td><input type="button" value="Volver al inicio" onclick = "location='/ResolucionPrueba3/Pages/index.jsp'"/></td>
                         </tr>
                 </table>
-        </table>
+        </div>
     </body>
 </html>

@@ -14,7 +14,7 @@
     </head>
     <body>
         <nav>
-        <%@include file="../Partials/Nav.jsp" %>
+            <%@include file="../Partials/Nav.jsp" %>
         </nav>
         <h2 align="center">Articulos</h2>
         <table border="0" align="center" width="1000">

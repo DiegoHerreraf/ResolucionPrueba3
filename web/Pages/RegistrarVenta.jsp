@@ -16,11 +16,10 @@
         <nav>
         <%@include file="../Partials/Nav.jsp" %>
         </nav>
-        <table border="0" width="1000" align="center">
             <form onsubmit="return validarRegistrarVenta();" class="form-register" method="post" action="${pageContext.request.contextPath}/ServletController">
                 <%-- Llamamos a la accion Registrar Venta --%>
                 <input type="hidden" name="accion" value="RegistrarVenta" />
-                <table border="0">
+                <table border="0" class="table table-bordered">
                         <tr>
                             <td colspan="5">Carrito de Compras</td>
                         </tr>
@@ -53,11 +52,10 @@
                            }
                         %>
                         <tr>
-                            <td colspan="5"><input type="submit" value="RegistrarVenta" name="btnVenta" /></td>
-                            <td><input type="button" value="Seguir comprando" onclick = "location='/ResolucionPrueba3/Pages/index.jsp'"/></td>
+                            <td colspan="5"><input type="submit" value="RegistrarVenta" name="btnVenta" />
+                            <input align="right" type="button" value="Seguir comprando" onclick = "location='/ResolucionPrueba3/Pages/index.jsp'"/></td></td>
                         </tr>
                     </table>
                 </form>
-        </table>
     </body>
 </html>
